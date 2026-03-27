@@ -2,12 +2,23 @@
 
 ## El problema
 
-Implementar un rate limiter que limite la cantidad de requests que un cliente
+Elegí el problema del rate limiting porque es un caso de uso real y crítico 
+en empresas financieras como IOL. Un broker necesita proteger sus endpoints 
+de abusos, scraping agresivo y picos de tráfico que podrían afectar la 
+operatoria de otros clientes. Me pareció el problema más afín al negocio 
+y el que mejor me permitía mostrar decisiones de diseño concretas y 
+justificadas.
+
+Implementar un "rate limiter" limita la cantidad de requests que un cliente
 puede realizar a una API dentro de una ventana de tiempo configurable.
 
 ## Algoritmo elegido: Sliding Window Counter
 
-Antes de escribir código evalué tres algoritmos:
+Antes de escribir código evalué los algoritmos que habla en el libro "System Design Interview" capitulo 4:
+
+**Token bucket** — tenés un balde con tokens. Cada request consume un token. Los tokens se recargan a una tasa fija. Permite bursts controlados.
+
+**Leaking bucket** — similar al token bucket pero al revés. Los requests entran a una cola y salen a una tasa fija. Muy uniforme pero no tolera bursts.
 
 **Fixed Window Counter** — el más simple. Divide el tiempo en ventanas fijas y
 cuenta requests por ventana. Lo descarté porque tiene un problema conocido en los
