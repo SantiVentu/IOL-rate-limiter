@@ -12,7 +12,7 @@ un Rate Limiter usando el algoritmo Sliding Window Counter.
 
 ## Cómo correrlo
 ```
-git clone <url-del-repo>
+git clone https://github.com/SantiVentu/IOL-rate-limiter.git
 cd RateLimiter
 dotnet run --project RateLimiter
 ```
@@ -36,7 +36,7 @@ Podés también probar los otros endpoints con sus límites respectivos.
 El endpoint de métricas muestra en tiempo real la cantidad de requests permitidos, bloqueados y el total.
 
 O desde la terminal:
-```
+``` 
 for i in {1..15}; do curl -s -o /dev/null -w "%{http_code}\n" http://localhost:5083/Test; done
 ```
 
